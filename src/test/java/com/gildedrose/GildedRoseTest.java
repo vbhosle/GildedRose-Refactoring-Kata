@@ -1,6 +1,5 @@
 package com.gildedrose;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.gildedrose.ItemDecorator.QUALITY_CAP;
@@ -169,7 +168,6 @@ class GildedRoseTest {
         assertEquals(-2, app.items[2].sellIn, "sellIn of back stage pass decreases by 1");
     }
 
-    @Disabled
     @Test
     void conjuredDecreasesInQualityBy2() {
         Item[] items = new Item[] { new Item("Conjured", 10, 20) };
@@ -179,7 +177,6 @@ class GildedRoseTest {
         assertEquals(9, app.items[0].sellIn, "sellIn decreases by 1");
     }
 
-    @Disabled
     @Test
     void conjuredDecreasesInQualityBy2PostSellIn() {
         Item[] items = new Item[] { new Item("Conjured", 0, 20) };
@@ -189,7 +186,6 @@ class GildedRoseTest {
         assertEquals(-1, app.items[0].sellIn, "sellIn decreases by 1");
     }
 
-    @Disabled
     @Test
     void conjuredQualityNeverGoesNegative() {
         Item[] items = new Item[] { new Item("Conjured", 10, 0) };
@@ -199,7 +195,6 @@ class GildedRoseTest {
         assertEquals(9, app.items[0].sellIn, "sellIn decreases by 1");
     }
 
-    @Disabled
     @Test
     void conjuredQualityNeverGoesNegativePostSellIn() {
         Item[] items = new Item[] {

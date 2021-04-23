@@ -13,6 +13,8 @@ public abstract class ItemDecorator extends Item {
                 return new Sulfuras(name, sellIn, quality);
             case "Backstage passes to a TAFKAL80ETC concert":
                 return new ConcertPass(name, sellIn, quality);
+            case "Conjured":
+                return new Conjured(name, sellIn, quality);
             default:
                 return new NormalItem(name, sellIn, quality);
         }

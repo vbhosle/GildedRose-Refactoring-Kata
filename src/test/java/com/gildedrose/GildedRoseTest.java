@@ -37,9 +37,9 @@ class GildedRoseTest {
     @Test
     void normalItemQualityNeverGoesNegativePostSellIn() {
         Item[] items = new Item[] {
-                                        new Item("Normal", -1, 0),
-                                        new Item("Normal", -1, 1)
-                                    };
+                new Item("Normal", -1, 0),
+                new Item("Normal", -1, 1)
+        };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(0, app.items[0].quality, "quality is never -ve");
@@ -52,9 +52,9 @@ class GildedRoseTest {
     @Test
     void agedBrieIncreasesInQualityBy1CappedAt50() {
         Item[] items = new Item[] {
-                            new Item("Aged Brie", 2, 0),
-                            new Item("Aged Brie", 4, 50),
-                        };
+                new Item("Aged Brie", 2, 0),
+                new Item("Aged Brie", 4, 50),
+        };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(1, app.items[0].quality, "quality of Aged Brie by 1");
@@ -85,6 +85,7 @@ class GildedRoseTest {
                 new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 12, 20),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 15, 50),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 11, 20),
         };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -96,31 +97,37 @@ class GildedRoseTest {
 
         assertEquals(GildedRose.QUALITY_CAP, app.items[2].quality, "quality of back stage pass capped at 50");
         assertEquals(14, app.items[2].sellIn, "sellIn of back stage pass decreases by 1");
+
+        assertEquals(21, app.items[3].quality, "quality of back stage pass increases by 1");
+        assertEquals(10, app.items[3].sellIn, "sellIn of back stage pass decreases by 1");
     }
 
-    @Disabled
     @Test
     void backStagePassesIncreaseInQualityBy2When6To10DaysLeftCappedAt50() {
         Item[] items = new Item[] {
-                new Item("Backstage passes to a TAFKAL80ETC concert", 11, 20),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 10, 20),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 5, 20),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 5, 50),
+                new Item("Backstage passes to a TAFKAL80ETC concert", 2, 20),
                 new Item("Backstage passes to a TAFKAL80ETC concert", 6, 20),
-                new Item("Backstage passes to a TAFKAL80ETC concert", 6, 50),
         };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
 
-        assertEquals(22, app.items[1].quality, "quality of back stage pass increases by 2");
-        assertEquals(10, app.items[1].sellIn, "sellIn of back stage pass decreases by 1");
+        assertEquals(22, app.items[0].quality, "quality of back stage pass increases by 2");
+        assertEquals(9, app.items[0].sellIn, "sellIn of back stage pass decreases by 1");
 
-        assertEquals(22, app.items[1].quality, "quality of back stage pass increases by 2");
-        assertEquals(9, app.items[1].sellIn, "sellIn of back stage pass decreases by 1");
+        assertEquals(23, app.items[1].quality, "quality of back stage pass increases by 2");
+        assertEquals(4, app.items[1].sellIn, "sellIn of back stage pass decreases by 1");
 
-        assertEquals(22, app.items[2].quality, "quality of back stage pass increases by 2");
-        assertEquals(5, app.items[2].sellIn, "sellIn of back stage pass decreases by 1");
+        assertEquals(GildedRose.QUALITY_CAP, app.items[2].quality, "quality of back stage pass capped at 50");
+        assertEquals(4, app.items[2].sellIn, "sellIn of back stage pass decreases by 1");
 
-        assertEquals(GildedRose.QUALITY_CAP, app.items[3].quality, "quality of back stage pass capped at 50");
-        assertEquals(5, app.items[3].sellIn, "sellIn of back stage pass decreases by 1");
+        assertEquals(23, app.items[3].quality, "quality of back stage pass increases by 2");
+        assertEquals(1, app.items[3].sellIn, "sellIn of back stage pass decreases by 1");
+
+        assertEquals(22, app.items[4].quality, "quality of back stage pass increases by 2");
+        assertEquals(5, app.items[4].sellIn, "sellIn of back stage pass decreases by 1");
     }
 
     @Test
@@ -168,7 +175,7 @@ class GildedRoseTest {
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(18, app.items[0].quality, "quality of normal item decreases by 1");
-        assertEquals(8, app.items[0].sellIn, "sellIn decreases by 1");
+        assertEquals(9, app.items[0].sellIn, "sellIn decreases by 1");
     }
 
     @Disabled

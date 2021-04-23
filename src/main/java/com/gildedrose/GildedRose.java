@@ -10,6 +10,10 @@ class GildedRose {
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
+            if(items[i].name.equals("Normal")) {
+                updateNormal(items[i]);
+                continue;
+            }
             if (!items[i].name.equals("Aged Brie")
                     && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (items[i].quality > 0) {
@@ -59,5 +63,17 @@ class GildedRose {
                 }
             }
         }
+    }
+
+    private void updateNormal(Item item) {
+        item.sellIn = item.sellIn - 1;
+        if(item.quality == 0) return;
+
+        item.quality = item.quality - 1;
+        if(item.quality == 0) return;
+
+        if(item.sellIn <= 0)
+            item.quality = item.quality - 1;
+
     }
 }

@@ -8,20 +8,7 @@ class GildedRose {
     public GildedRose(Item[] items) {
         this.items = new ItemDecorator[items.length];
         for (int i = 0; i < items.length; i++) {
-            final Item item =  items[i];
-            switch (item.name) {
-                case "Aged Brie":
-                    this.items[i] = new AgedBrie(item.name, item.sellIn, item.quality);
-                    break;
-                case "Sulfuras, Hand of Ragnaros":
-                    this.items[i] = new Sulfuras(item.name, item.sellIn, item.quality);
-                    break;
-                case "Backstage passes to a TAFKAL80ETC concert":
-                    this.items[i] = new ConcertPass(item.name, item.sellIn, item.quality);
-                    break;
-                default:
-                    this.items[i] = new NormalItem(item.name, item.sellIn, item.quality);
-            }
+            this.items[i] = ItemDecorator.create(items[i].name, items[i].sellIn, items[i].quality);
         }
     }
 

@@ -2,28 +2,36 @@ package com.gildedrose;
 
 class GildedRose {
     public static final int QUALITY_CAP = 50;
-    Item[] items;
+    ItemDecorator[] items;
 
     public GildedRose(Item[] items) {
-        this.items = items;
+        this.items = new ItemDecorator[items.length];
+        for (int i = 0; i < items.length; i++) {
+            final Item item =  items[i];
+            this.items[i] = new ItemDecorator(item.name, item.sellIn, item.quality) {
+                @Override
+                public void update() {
+                    switch (name) {
+                        case "Aged Brie":
+                            updateAgedBrie(this);
+                            break;
+                        case "Sulfuras, Hand of Ragnaros":
+                            updateSulfuras(this);
+                            break;
+                        case "Backstage passes to a TAFKAL80ETC concert":
+                            updatePasses(this);
+                            break;
+                        default:
+                            updateNormal(this);
+                    }
+                }
+            };
+        }
     }
 
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
-            final Item item = items[i];
-            switch (item.name) {
-                case "Aged Brie":
-                    updateAgedBrie(item);
-                    break;
-                case "Sulfuras, Hand of Ragnaros":
-                    updateSulfuras(item);
-                    break;
-                case "Backstage passes to a TAFKAL80ETC concert":
-                    updatePasses(item);
-                    break;
-                default:
-                    updateNormal(item);
-            }
+            items[i].update();
         }
     }
 

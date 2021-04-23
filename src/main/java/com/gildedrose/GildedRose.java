@@ -1,13 +1,19 @@
 package com.gildedrose;
 
+import static com.gildedrose.ItemDecorator.QUALITY_CAP;
+
 class GildedRose {
-    public static final int QUALITY_CAP = 50;
     ItemDecorator[] items;
 
     public GildedRose(Item[] items) {
         this.items = new ItemDecorator[items.length];
         for (int i = 0; i < items.length; i++) {
             final Item item =  items[i];
+            if(item.name.equals("Normal")){
+                this.items[i] = new NormalItem(item.name, item.sellIn, item.quality);
+                continue;
+            }
+
             this.items[i] = new ItemDecorator(item.name, item.sellIn, item.quality) {
                 @Override
                 public void update() {
@@ -21,8 +27,6 @@ class GildedRose {
                         case "Backstage passes to a TAFKAL80ETC concert":
                             updatePasses(this);
                             break;
-                        default:
-                            updateNormal(this);
                     }
                 }
             };
@@ -60,17 +64,5 @@ class GildedRose {
         item.sellIn = item.sellIn - 1;
         if(item.quality == QUALITY_CAP) return;
         item.quality = item.quality + 1;
-    }
-
-    private void updateNormal(Item item) {
-        item.sellIn = item.sellIn - 1;
-        if(item.quality == 0) return;
-
-        item.quality = item.quality - 1;
-        if(item.quality == 0) return;
-
-        if(item.sellIn <= 0)
-            item.quality = item.quality - 1;
-
     }
 }

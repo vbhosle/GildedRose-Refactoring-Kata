@@ -3,6 +3,7 @@ package com.gildedrose;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import static com.gildedrose.ItemDecorator.QUALITY_CAP;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
@@ -60,7 +61,7 @@ class GildedRoseTest {
         assertEquals(1, app.items[0].quality, "quality of Aged Brie by 1");
         assertEquals(1, app.items[0].sellIn, "sellIn decreases by 1");
 
-        assertEquals(GildedRose.QUALITY_CAP, app.items[1].quality, "quality of Aged Brie capped at 50");
+        assertEquals(QUALITY_CAP, app.items[1].quality, "quality of Aged Brie capped at 50");
         assertEquals(3, app.items[1].sellIn, "sellIn decreases by 1");
     }
 
@@ -95,7 +96,7 @@ class GildedRoseTest {
         assertEquals(21, app.items[1].quality, "quality of back stage pass increases by 1");
         assertEquals(11, app.items[1].sellIn, "sellIn of back stage pass decreases by 1");
 
-        assertEquals(GildedRose.QUALITY_CAP, app.items[2].quality, "quality of back stage pass capped at 50");
+        assertEquals(QUALITY_CAP, app.items[2].quality, "quality of back stage pass capped at 50");
         assertEquals(14, app.items[2].sellIn, "sellIn of back stage pass decreases by 1");
 
         assertEquals(21, app.items[3].quality, "quality of back stage pass increases by 1");
@@ -120,7 +121,7 @@ class GildedRoseTest {
         assertEquals(23, app.items[1].quality, "quality of back stage pass increases by 2");
         assertEquals(4, app.items[1].sellIn, "sellIn of back stage pass decreases by 1");
 
-        assertEquals(GildedRose.QUALITY_CAP, app.items[2].quality, "quality of back stage pass capped at 50");
+        assertEquals(QUALITY_CAP, app.items[2].quality, "quality of back stage pass capped at 50");
         assertEquals(4, app.items[2].sellIn, "sellIn of back stage pass decreases by 1");
 
         assertEquals(23, app.items[3].quality, "quality of back stage pass increases by 2");
@@ -145,7 +146,7 @@ class GildedRoseTest {
         assertEquals(23, app.items[1].quality, "quality of back stage pass increases by 3");
         assertEquals(0, app.items[1].sellIn, "sellIn of back stage pass decreases by 1");
 
-        assertEquals(GildedRose.QUALITY_CAP, app.items[2].quality, "quality of back stage pass capped at 50");
+        assertEquals(QUALITY_CAP, app.items[2].quality, "quality of back stage pass capped at 50");
         assertEquals(0, app.items[2].sellIn, "sellIn of back stage pass decreases by 1");
     }
 

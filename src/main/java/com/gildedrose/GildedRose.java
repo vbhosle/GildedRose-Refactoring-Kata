@@ -9,27 +9,19 @@ class GildedRose {
         this.items = new ItemDecorator[items.length];
         for (int i = 0; i < items.length; i++) {
             final Item item =  items[i];
-            if(item.name.equals("Normal")){
-                this.items[i] = new NormalItem(item.name, item.sellIn, item.quality);
-                continue;
+            switch (item.name) {
+                case "Aged Brie":
+                    this.items[i] = new AgedBrie(item.name, item.sellIn, item.quality);
+                    break;
+                case "Sulfuras, Hand of Ragnaros":
+                    this.items[i] = new Sulfuras(item.name, item.sellIn, item.quality);
+                    break;
+                case "Backstage passes to a TAFKAL80ETC concert":
+                    this.items[i] = new ConcertPass(item.name, item.sellIn, item.quality);
+                    break;
+                default:
+                    this.items[i] = new NormalItem(item.name, item.sellIn, item.quality);
             }
-
-            this.items[i] = new ItemDecorator(item.name, item.sellIn, item.quality) {
-                @Override
-                public void update() {
-                    switch (name) {
-                        case "Aged Brie":
-                            updateAgedBrie(this);
-                            break;
-                        case "Sulfuras, Hand of Ragnaros":
-                            updateSulfuras(this);
-                            break;
-                        case "Backstage passes to a TAFKAL80ETC concert":
-                            updatePasses(this);
-                            break;
-                    }
-                }
-            };
         }
     }
 

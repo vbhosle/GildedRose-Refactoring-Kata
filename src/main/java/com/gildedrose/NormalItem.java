@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class NormalItem extends ItemDecorator {
+public class NormalItem extends GuildedRoseItem {
     public NormalItem(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }

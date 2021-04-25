@@ -2,7 +2,7 @@ package com.gildedrose;
 
 import org.junit.jupiter.api.Test;
 
-import static com.gildedrose.ItemDecorator.QUALITY_CAP;
+import static com.gildedrose.GuildedRoseItem.QUALITY_CAP;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {

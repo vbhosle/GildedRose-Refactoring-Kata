@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class ConcertPass extends ItemDecorator {
+public class ConcertPass extends GuildedRoseItem {
     public ConcertPass(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
@@ -12,13 +12,13 @@ public class ConcertPass extends ItemDecorator {
             this.quality = 0;
             return;
         }
-        if(this.quality == ItemDecorator.QUALITY_CAP) return;
+        if(this.quality == GuildedRoseItem.QUALITY_CAP) return;
 
         this.quality = this.quality + 1;
-        if(this.quality == ItemDecorator.QUALITY_CAP) return;
+        if(this.quality == GuildedRoseItem.QUALITY_CAP) return;
 
         if(this.sellIn < 10) this.quality = this.quality + 1;
-        if(this.quality == ItemDecorator.QUALITY_CAP) return;
+        if(this.quality == GuildedRoseItem.QUALITY_CAP) return;
 
         if(this.sellIn < 5) this.quality = this.quality + 1;
     }

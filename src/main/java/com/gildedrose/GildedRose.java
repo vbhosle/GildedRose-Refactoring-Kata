@@ -1,14 +1,14 @@
 package com.gildedrose;
 
-import static com.gildedrose.ItemDecorator.QUALITY_CAP;
+import static com.gildedrose.GuildedRoseItem.QUALITY_CAP;
 
 class GildedRose {
-    ItemDecorator[] items;
+    GuildedRoseItem[] items;
 
     public GildedRose(Item[] items) {
-        this.items = new ItemDecorator[items.length];
+        this.items = new GuildedRoseItem[items.length];
         for (int i = 0; i < items.length; i++) {
-            this.items[i] = ItemDecorator.create(items[i].name, items[i].sellIn, items[i].quality);
+            this.items[i] = GuildedRoseItem.create(items[i].name, items[i].sellIn, items[i].quality);
         }
     }
 

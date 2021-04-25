@@ -1,11 +1,11 @@
 package com.gildedrose;
 
 //Creating decorator as it is not allowed to touch Item class
-public abstract class ItemDecorator extends Item {
+public abstract class GuildedRoseItem extends Item {
 
     protected static final int QUALITY_CAP = 50;
 
-    public static ItemDecorator create(String name, int sellIn, int quality) {
+    public static GuildedRoseItem create(String name, int sellIn, int quality) {
         switch (name) {
             case "Aged Brie":
                 return new AgedBrie(name, sellIn, quality);
@@ -20,7 +20,7 @@ public abstract class ItemDecorator extends Item {
         }
     }
 
-    public ItemDecorator(String name, int sellIn, int quality) {
+    public GuildedRoseItem(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
 

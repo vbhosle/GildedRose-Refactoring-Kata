@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-public class Conjured extends ItemDecorator {
+public class Conjured extends GuildedRoseItem {
     public Conjured(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
     }
